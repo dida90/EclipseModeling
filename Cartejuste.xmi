@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mPA:Carte xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mPA="http://ubo.sahki/mPA"
+    xsi:schemaLocation="http://ubo.sahki/mPA mpa.ecore">
+  <dessin xsi:type="mPA:Arc"
+      centreArc="//@dessin.1"
+      ligneAngle1="//@dessin.2"
+      ligneAngle2="//@dessin.5"/>
+  <dessin xsi:type="mPA:Point"/>
+  <dessin xsi:type="mPA:Ligne"
+      Distance="1.0"
+      origine="//@dessin.1"
+      destination="//@dessin.4"/>
+  <dessin xsi:type="mPA:Point"
+      Longitude="2.0"
+      Lattitude="1.0"/>
+  <dessin xsi:type="mPA:Point"
+      Longitude="4.0"
+      Lattitude="3.0"/>
+  <dessin xsi:type="mPA:Ligne"
+      Distance="1.0"
+      origine="//@dessin.1"
+      destination="//@dessin.3"/>
+</mPA:Carte>
