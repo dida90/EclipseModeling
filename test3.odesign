@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="test3" version="8.1.0">
+  <ownedViewpoints name="geom" modelFileExtension="mpa">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="carte" initialisation="true" domainClass="mpa.Carte">
+      <metamodel href="http://ubo.sahki/mPA#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="point" semanticCandidatesExpression="feature:dessin" domainClass="mpa.Point">
+          <style xsi:type="style:SquareDescription" labelExpression="[self.Lattitude/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ligne" semanticCandidatesExpression="feature:dessin" domainClass="mpa.Ligne">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="cercle" semanticCandidatesExpression="feature:dessin" domainClass="mpa.Cercle">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression="[self.centre/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="arc" domainClass="mpa.Arc">
+          <style xsi:type="style:DotDescription" labelExpression="[self. angle1/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="origine" sourceMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='ligne']" targetMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']" targetFinderExpression="feature:origine">
+          <style sourceArrow="OutputArrow" targetArrow="OutputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="destination" sourceMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='ligne']" targetMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']" targetFinderExpression="feature:destination">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="centre" sourceMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='cercle']" targetMapping="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']" targetFinderExpression="feature:centre">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="pointM" nodeMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mpa.Point" referenceName="dessin"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ligneM" nodeMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='ligne']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mpa.Ligne" referenceName="dessin"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="cercleM" label="cercleM" nodeMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='cercle']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mpa.Cercle" referenceName="dessin"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="relationLignePointOrigine" edgeMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@edgeMappings[name='origine']" extraSourceMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='ligne']" extraTargetMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="origine" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="relationLignePointDesti" edgeMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@edgeMappings[name='destination']" extraSourceMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='ligne']" extraTargetMappings="//@ownedViewpoints[name='geom']/@ownedRepresentations[name='carte']/@defaultLayer/@nodeMappings[name='point']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="destination" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
